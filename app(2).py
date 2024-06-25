@@ -2,8 +2,8 @@ import streamlit as st
 import pickle
 import numpy as np
 import pandas as pd
-import matplotlib as plt
-import seaborn as sns
+#import matplotlib as plt
+#import seaborn as sns
 
 # Load the model, PCA, and scaler using pickle
 with open('kmeans_model.pkl', 'rb') as f:
@@ -52,27 +52,27 @@ cluster = kmeans.predict(user_input_pca)
 st.write(f'The customer belongs to cluster: {cluster[0]}')
 
 # Visualize clusters
-def plot_clusters(PCA_data, cluster_labels, user_input_pca, title):
-    plt.figure(figsize=(10, 6))
-    unique_labels = np.unique(cluster_labels)
-    palette = sns.color_palette("viridis", len(unique_labels))
-    
-    # Create a DataFrame for easy handling in seaborn
-    plot_data = pd.DataFrame(PCA_data, columns=['col1', 'col2', 'col3'])
-    plot_data['Cluster'] = cluster_labels
+#def plot_clusters(PCA_data, cluster_labels, user_input_pca, title):
+#    plt.figure(figsize=(10, 6))
+#    unique_labels = np.unique(cluster_labels)
+#    palette = sns.color_palette("viridis", len(unique_labels))
+#    
+#    # Create a DataFrame for easy handling in seaborn
+#    plot_data = pd.DataFrame(PCA_data, columns=['col1', 'col2', 'col3'])
+#    plot_data['Cluster'] = cluster_labels
 
-    sns.scatterplot(x='col1', y='col2', hue='Cluster', palette=palette, data=plot_data, legend='full')
-    plt.scatter(user_input_pca[:, 0], user_input_pca[:, 1], c='red', marker='x', s=100)  # New customer point
-    plt.title(title)
-    plt.xlabel('PCA Component 1')
-    plt.ylabel('PCA Component 2')
-    plt.legend(title='Clusters')
-    st.pyplot(plt)
+#    sns.scatterplot(x='col1', y='col2', hue='Cluster', palette=palette, data=plot_data, legend='full')
+#    plt.scatter(user_input_pca[:, 0], user_input_pca[:, 1], c='red', marker='x', s=100)  # New customer point
+#    plt.title(title)
+#    plt.xlabel('PCA Component 1')
+#    plt.ylabel('PCA Component 2')
+#    plt.legend(title='Clusters')
+#    st.pyplot(plt)
 
 # Load your original data (replace with your actual data)
-original_data = pd.read_excel('marketing_campaign1 (1).xlsx')
-original_data_scaled = scaler.transform(original_data)
-PCA_data = pca.transform(original_data_scaled)
-cluster_labels = kmeans.predict(PCA_data)
+#original_data = pd.read_excel('marketing_campaign1 (1).xlsx')
+#original_data_scaled = scaler.transform(original_data)
+#PCA_data = pca.transform(original_data_scaled)
+#cluster_labels = kmeans.predict(PCA_data)
 
-plot_clusters(PCA_data, cluster_labels, user_input_pca, 'K-Means Clustering')
+#plot_clusters(PCA_data, cluster_labels, user_input_pca, 'K-Means Clustering')
