@@ -54,10 +54,3 @@ st.write(f'The customer belongs to cluster: {cluster[0]}')
 
 
 
-# Load your original data (replace with your actual data)
-original_data = pd.read_excel('marketing_campaign1 (1).xlsx')
-original_data_scaled = scaler.transform(original_data)
-PCA_data = pca.transform(original_data_scaled)
-cluster_labels = kmeans.predict(PCA_data)
-
-plot_clusters(PCA_data, cluster_labels, user_input_pca, 'K-Means Clustering')
