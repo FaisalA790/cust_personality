@@ -2,7 +2,6 @@ import streamlit as st
 import pickle
 import numpy as np
 import pandas as pd
-i
 
 # Load the model, PCA, scaler, and kmeans using pickle
 with open('pipeline.pkl','rb') as file:
